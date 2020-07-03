@@ -17,12 +17,29 @@ const appInfo = {
  * 메인 홈페이지 : index.html
  */
 app.get('/', (req, res)=>{
-    var homeTemplate = fs.readFileSync('./index.html', 'utf-8');
+    const homeTemplate = fs.readFileSync('./index.html', 'utf-8');
     res.send(homeTemplate);
-})
+});
 
+/**
+ * host/save/
+ * 
+ * 저장 내용 보내는 주소
+ */
+app.post('/save', (req, res)=>{
 
-// 정적 파일 제공
+});
+
+/**
+ * host/read/
+ * 
+ * 읽기 내용 보내는 주소
+ */
+app.post('/read', (req, res)=>{
+
+});
+
+// 스트립트 소스
 app.use('/src', express.static('src'));
 
 /** 앱 리스닝 **/

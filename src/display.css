@@ -1,0 +1,24 @@
+/* custom display sheet */
+.header{
+    padding: 0.8rem;
+}
+.footer{
+    /* 최소 크기 : 각종 문자열 출력에 적합하게 */
+    min-height: 1.5rem;
+    overflow: hidden;
+}
+.main-grid{
+    background-color: hsl(0, 0%, 16.5%);
+}
+/* 커스텀 스크롤바 */
+/* .main-grig::-webkit-scrollbar{} */
+
+/* custom button */
+.btn{
+    background-color: hsl(0, 0%, 16.5%);
+}
+.btn.text{padding: 0.5rem 0.8rem;}
+.btn:hover{
+    background-color: hsl(0, 0%, 19%);
+    outline: 1px dotted white;
+}
