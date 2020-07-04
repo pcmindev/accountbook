@@ -8,17 +8,75 @@
     overflow: hidden;
 }
 .main-grid{
+    display: flex;
+    background-color: hsl(0, 0%, 16.5%);
+    padding: 1em;
+}
+.main-grid>div.message{
+    width: 100%;
+    align-self: center;
+    text-align: center;
+    color: hsl(0, 0%, 50%);
+}
+
+/* 입력공간에 대한 스타일 정의 */
+#madang{
+    width: 30%;
+    min-width: 350px;
+}
+.madang-bar{padding: 0.5rem;}
+.madang-bar>.btn{min-width: 4pc;}
+
+#madang-form .formToken{padding: 0.8rem;}
+#madang-form .formToken>label{
+    display: block;
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+}
+#madang-form .formToken>input,
+#madang-form .formToken>textarea{
+    padding: 0.8rem;
+    border-bottom: 1px solid hsl(58, 100%, 47%);
+    outline: none;
+}
+#madang-form .formToken>input:focus,
+#madang-form .formToken>textarea:focus{
     background-color: hsl(0, 0%, 16.5%);
 }
-/* 커스텀 스크롤바 */
-/* .main-grig::-webkit-scrollbar{} */
+
+/* 입력 공간 그룹 */
+.formTokenGroup{display: flex;}
+.formTokenGroup.datatime>.formToken:first-child{width: 60%;padding-right: 0.4rem !important;}
+.formTokenGroup.datatime>.formToken:last-child{width: 40%;padding-left: 0.4rem !important;}
+
+/* date 입력에 대한 영역 스타일 정의 */
+.formToken.date>input{width: 32%;}
+/* time(2: 시-분) 입력에 대한 영역 스타일 정의 */
+.formToken.time-2>input{width: 48%;}
+/* number 입력에 대한 영역 스타일 정의 */
+.formToken:not(.text)>input{text-align: center;}
+/* text 입력에 대한 영역 스타일 정의 */
+.formToken.text>input,
+.formToken.text>textarea{width: 100%;}
+.formToken.text>input{height: 2.5pc;}
+.formToken.text>textarea{height: 6pc;resize: vertical;}
 
 /* custom button */
 .btn{
     background-color: hsl(0, 0%, 16.5%);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
 }
 .btn.text{padding: 0.5rem 0.8rem;} /* 내용이 text일 경우 */
-.btn:hover{
-    background-color: hsl(0, 0%, 19%);
-    outline: 1px dotted white;
+.btn:not(.check):hover{
+    background-color: hsl(58, 50%, 16.5%);
+    outline: 1px dashed hsl(58, 50%, 16.5%);
 }
+.btn:focus{outline: none;}
+.btn.check{
+    background-color: hsl(58, 100%, 47%);
+    color: black;
+}
+/* save 버튼 색깔지정 */
+.btn.save{background-color: hsl(58, 100%, 16.5%);}

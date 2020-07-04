@@ -9,23 +9,50 @@
     <script></script>
 </head>
 <body class="flex3 flexDc">
-
     <div class="header">
-        <button class="btn text">ADD</button>
-        <button class="btn text">READ</button>
-        <button class="btn text">CHANGE</button>
-        <button class="btn text">DELETE</button>
+        <button class="btn text">Statistics</button>
+        <button class="btn text">Database</button>
     </div>
     <div class="content flex3">
         <div></div>
-        <div id="namoo" class="main-grid">Content</div>
+        <div id="namoo" class="main-grid"><div class="message">꽤 조용합니다...</div></div>
         <div id="madang" class="flex2T flexDc">
-            <div>
-                <button class="btn text">ADD</button>
-                <button class="btn text">READ</button>
+            <div class="madang-bar">
+                <button class="btn text save">Save</button>
+                <button class="btn text clear">Clear</button>
+                <button class="btn text set">Set</button>
             </div>
-            <div>
-                <input type="text">
+            <div id="madang-form">
+                <div class="formTokenGroup datatime">
+                    <div class="formToken date">
+                        <label>날짜</label>
+                        <input type="text">.<input type="text">.<input type="text">
+                    </div>
+                    <div class="formToken time-2">
+                        <label>시간</label>
+                        <input type="text">:<input type="text">
+                    </div>
+                </div>
+                <div class="formToken text position">
+                    <label>장소</label>
+                    <input type="text">
+                </div>
+                <div class="formToken text purpose">
+                    <label>목적</label>
+                    <input type="text">
+                </div>
+                <div class="formToken text object">
+                    <label>대상</label>
+                    <input type="text">
+                </div>
+                <div class="formToken text price">
+                    <label>가격</label>
+                    <input type="text">
+                </div>
+                <div class="formToken text remarks">
+                    <label>비고</label>
+                    <textarea></textarea>
+                </div>
             </div>
         </div>
     </div>

@@ -8,11 +8,10 @@ html, body{
     margin: 0px;
 }
 
-/* button type to text style */
+/* input, button type to text style */
+input,
 button,
-input[type="button"],
-input[type="reset"],
-input[type="submit"]{
+textarea{
     background-color: inherit;
     color: inherit;
     padding: 0px;
@@ -20,7 +19,6 @@ input[type="submit"]{
     border: none;
     font-size: 100%;
     font-family: inherit;
-    cursor: pointer;
 }
 
 /* flexbox in direction-column*/
@@ -28,11 +26,13 @@ input[type="submit"]{
 
 /* flexbox with 3 part */
 [class*=flex3]{display: flex;}
-[class*=flex3]>:first-child{flex: 0 0 auto;}
+[class*=flex3]>:first-child{flex: 0 1 auto;}
 [class*=flex3]>:nth-child(2){flex: 1 0 auto;}
-[class*=flex3]>:last-child{flex: 0 0 auto;}
+[class*=flex3]>:last-child{flex: 0 1 auto;}
 
 /* flexbox with 2 part and top bar */
 [class*=flex2T]{display: flex;}
 [class*=flex2T]>:first-child{flex: 0 0 auto;}
 [class*=flex2T]>:last-child{flex: 1 0 auto;}
+
+/* *::-webkit-scrollbar{} */
