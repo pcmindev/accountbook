@@ -35,4 +35,21 @@ textarea{
 [class*=flex2T]>:first-child{flex: 0 0 auto;}
 [class*=flex2T]>:last-child{flex: 1 0 auto;}
 
-/* *::-webkit-scrollbar{} */
+/* 드래그 전체영역 */
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+/* 드래그바 */
+*::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: hsl(0, 0%, 33%);
+    cursor: move !important;
+}
+*::-webkit-scrollbar-thumb:hover {background-color: hsl(0, 0%, 45%);}
+*::-webkit-scrollbar-track-piece {background-color: transparent;} /* 드래그바 이외 몸통 */
+*::-webkit-scrollbar-button {display: none;} /* 양쪽 버튼 */
+*::-webkit-scrollbar-button:start {display: none;} /* top,left 버튼 */
+*::-webkit-scrollbar-button:end {display: none;} /* bottom,right 버튼 */
+*::-webkit-scrollbar-corner {background-color: transparent;} /* 우측 하단코너 */
+*::-webkit-resizer {background-color: transparent;} /* 리사이저 */
