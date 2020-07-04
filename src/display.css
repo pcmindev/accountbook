@@ -17,7 +17,7 @@
 .btn{
     background-color: hsl(0, 0%, 16.5%);
 }
-.btn.text{padding: 0.5rem 0.8rem;}
+.btn.text{padding: 0.5rem 0.8rem;} /* 내용이 text일 경우 */
 .btn:hover{
     background-color: hsl(0, 0%, 19%);
     outline: 1px dotted white;
