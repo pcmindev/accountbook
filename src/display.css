@@ -43,6 +43,7 @@
 #madang-form .formToken>textarea:focus{
     background-color: hsl(0, 0%, 16.5%);
 }
+.formToken>input{height: 2.5pc;}
 
 /* 입력 공간 그룹 */
 .formTokenGroup{display: flex;}
@@ -58,8 +59,7 @@
 /* text 입력에 대한 영역 스타일 정의 */
 .formToken.text>input,
 .formToken.text>textarea{width: 100%;}
-.formToken.text>input{height: 2.5pc;}
-.formToken.text>textarea{height: 6pc;resize: vertical;}
+.formToken.text>textarea{resize: vertical;}
 
 /* custom button */
 .btn{

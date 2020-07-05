@@ -6,7 +6,7 @@
     <title>AccountBook</title>
     <link rel="stylesheet" href="src/style.css">
     <link rel="stylesheet" href="src/display.css">
-    <script></script>
+    <script src="src/preload.js"></script>
 </head>
 <body class="flex3 flexDc">
     <div class="header">
@@ -20,17 +20,17 @@
             <div class="madang-bar">
                 <button class="btn text save">Save</button>
                 <button class="btn text clear">Clear</button>
-                <button class="btn text set">Set</button>
+                <button class="btn text set">Time Set</button>
             </div>
             <div id="madang-form">
                 <div class="formTokenGroup datatime">
                     <div class="formToken date">
                         <label>날짜</label>
-                        <input type="text">.<input type="text">.<input type="text">
+                        <input type="text" placeholder="YYYY">.<input type="text" placeholder="MM">.<input type="text" placeholder="DD">
                     </div>
                     <div class="formToken time-2">
                         <label>시간</label>
-                        <input type="text">:<input type="text">
+                        <input type="text" placeholder="HH">:<input type="text" placeholder="MM">
                     </div>
                 </div>
                 <div class="formToken text position">
@@ -51,13 +51,13 @@
                 </div>
                 <div class="formToken text remarks">
                     <label>비고</label>
-                    <textarea></textarea>
+                    <textarea rows="2"></textarea>
                 </div>
             </div>
         </div>
     </div>
     <div class="footer"></div>
 
-    <script></script>
+    <script src="src/renderer.js"></script>
 </body>
 </html>
