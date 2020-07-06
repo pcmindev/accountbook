@@ -63,8 +63,16 @@ app.post('/save', (req, res)=>{
     let body = '';
     req.on('data', (data)=>{body += data});
     req.on('end', ()=>{
+        //test ******************************
         console.log(1, body.split(/(?<!\\)"/g));
-        res.send()
+
+        fs.appendFile(appInfo.saveItemDirPath + appInfo.saveItemFileName, body, (err)=>{
+            if(err){
+                res.status(404).send();
+                throw err;
+            }
+            res.send();
+        });
     });
 });
 
@@ -74,7 +82,17 @@ app.post('/save', (req, res)=>{
  * 읽기 내용 보내는 주소
  */
 app.get('/read', (req, res)=>{
-
+    if(appInfo.saveItemExist){
+        fs.readFile(appInfo.saveItemDirPath + appInfo.saveItemFileName, (err, data)=>{
+            if(err){
+                res.status(404).send();
+                throw err;
+            }
+            res.send(data);
+        });
+    }
+    // 파일에 내용이 없을 경우
+    else{ res.send(); }
 });
 
 // 스트립트 소스

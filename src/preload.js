@@ -43,8 +43,8 @@ function saveForm(){
         url: '/save',
         message: mesStr
     },
-    (xhr)=>{},
-    (xhr)=>{}
+    (xhr)=>{/** 성공 메세지 띄우기 & 출력한 내용 변경하기 */},
+    (xhr)=>{/** 실패 메세지 띄우기 */}
     );
 }
 
@@ -81,4 +81,17 @@ function isFormEmpty(){
         if(userInput[i].value != "") return false;
     }
     return true;
+}
+
+/**************************************************************************
+ * 출력폼 서비스 영역                                                     *
+ **************************************************************************/
+// [임시] 읽어온 내용 출력하기
+ function read(){
+    ajaxPipe({
+        method: 'GET',
+        url: '/read'
+    },
+    (xhr)=>{console.log(xhr.responseText);}
+    );
 }
