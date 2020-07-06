@@ -60,7 +60,12 @@ app.get('/', (req, res)=>{
  * 저장 내용 보내는 주소
  */
 app.post('/save', (req, res)=>{
-
+    let body = '';
+    req.on('data', (data)=>{body += data});
+    req.on('end', ()=>{
+        console.log(1, body.split(/(?<!\\)"/g));
+        res.send()
+    });
 });
 
 /**

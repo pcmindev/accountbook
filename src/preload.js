@@ -1,5 +1,52 @@
+/**************************************************************************
+ * AJAX 서비스 영역                                                     *
+ **************************************************************************/
+/** parameter: xhr
+ * xhr <= instantof XMLHttpRequest()
+ * xhr.para = obj : 원명령 객체
+ *   obj.method = "GET","POST": 요청방식
+ *   obj.url = 주소
+ *   obj.message = POST로 보낼 문자
+ **/
+function ajaxPipe(
+    obj,
+    successCallback=((xhr)=>{console.log("SUCCESS", xhr.status, xhr.obj)}),
+    failCallback=((xhr)=>{console.log("FAIL", xhr.status, xhr.obj)})
+)
+{
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(this.readyState == 4){
+            if(this.status == 200){successCallback(this);}
+            else{failCallback(this);}
+        }
+    }
+    xhr.para = obj;
+    xhr.open(obj.method, obj.url, true);
+    if(obj.method==="POST") xhr.send(obj.message);
+    else xhr.send();
+}
+
+/**************************************************************************
+ * 입력폼 서비스 영역                                                     *
+ **************************************************************************/
 // 입력폼에 적힌 내용을 서버에 보내 저장
-function saveForm(){}
+function saveForm(){
+    const userInput = form.querySelectorAll("input,textarea");
+    let mesStr = "";
+    for(let i=0; i<userInput.length; ++i){
+        mesStr += userInput[i].value.replace(/"/g, '\\"') + '"';
+    }
+
+    ajaxPipe({
+        method: 'POST',
+        url: '/save',
+        message: mesStr
+    },
+    (xhr)=>{},
+    (xhr)=>{}
+    );
+}
 
 // 입력폼에 적힌 모든 내용 지우기
 function clearForm(){
