@@ -10,5 +10,8 @@ function addListener(){
     clearFormBtn.onclick = clearForm;
     const setFormBtn = document.querySelector(".madang-bar>.set");
     setFormBtn.onclick = setForm;
+
+    //test ******************************
+    document.getElementsByClassName('header')[0].lastElementChild.onclick = read;
 }
 addListener();

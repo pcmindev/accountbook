@@ -52,7 +52,9 @@ function saveForm(){
     const userInput = form.querySelectorAll("input,textarea");
     let msgStr = "";
     for(let i=0; i<userInput.length; ++i){
-        msgStr += userInput[i].value.replace(/"/g, '\\"') + '"';
+        // 각 요소마다 '&'로 묶기
+        msgStr += userInput[i].value.replace(/&/g, '\\&');
+        if(i != userInput.length-1) msgStr += '&';
     }
 
     ajaxPipe({
@@ -80,15 +82,11 @@ function clearForm(){
 function setForm(){
     const userInput = form.querySelectorAll("input,textarea");
     const presentNow = new Date();
-    for(let i=0; i<5; ++i){
-        switch(i){
-            case 0: userInput[i].value = presentNow.getFullYear(); break;
-            case 1: userInput[i].value = presentNow.getMonth()+1; break;
-            case 2: userInput[i].value = presentNow.getDate(); break;
-            case 3: userInput[i].value = presentNow.getHours(); break;
-            case 4: userInput[i].value = presentNow.getMinutes(); break;
-        }
-    }
+    userInput[0].value = presentNow.getFullYear();
+    userInput[1].value = presentNow.getMonth()+1;
+    userInput[2].value = presentNow.getDate();
+    userInput[3].value = presentNow.getHours();
+    userInput[4].value = presentNow.getMinutes();
 }
 
 // 입력폼이 비워져있는지 확인합니다.
@@ -104,11 +102,32 @@ function isFormEmpty(){
  * 출력폼 서비스 영역
  **************************************************************************/
 // [임시] 읽어온 내용 출력하기
- function read(){
+function read(){
     ajaxPipe({
         method: 'GET',
         url: '/read'
     },
-    (xhr)=>{console.log(xhr.responseText);}
-    );
+    (xhr)=>{
+        document.getElementById('namoo').innerHTML = formitize(xhr.responseText);
+    });
+}
+
+// test ************************************************
+function formitize(contentStr){
+    // 각 아이템 '`'로 분류
+    let content = contentStr.split(/(?<!\\)`/g)
+    // 각 아이템 요소 '&'로 분류
+    content.forEach((ele, idx, arr) => {
+        arr[idx] = arr[idx].split(/(?<!\\)&/g)
+    });
+
+    let str = '';
+    for(let i=0; i<content.length; ++i){
+        str += '<div>'
+        for(let j=0; j<content[i].length; ++j){
+            str += `<div>${content[i][j].replace(/\\`/g, '`').replace(/\\&/g, '&')}</div>`;
+        }
+        str += '</div>'
+    }
+    return str;
 }
