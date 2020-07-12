@@ -3,6 +3,7 @@ const form = document.getElementById("madang-form");
 
 // 이벤트 바인딩
 function addListener(){
+    //// 입력 영역
     const saveFormBtn = document.querySelector(".madang-bar>.save");
     saveFormBtn.onclick = saveForm;
     const clearFormBtn = document.querySelector(".madang-bar>.clear");

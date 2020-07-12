@@ -1,5 +1,22 @@
 /**************************************************************************
- * AJAX 서비스 영역                                                     *
+ * 안내 메세지 서비스 영역
+ **************************************************************************/
+ // 메세지 표시 함수
+function showMessage(str, type = 0){
+    const msgNode = document.getElementsByClassName('footer')[0];
+    // 경고 메세지일 경우
+    if(type === 1) msgNode.innerHTML = `<span style='color:red'>[경고]${str}</span>`;
+    // 주의 메세지일 경우
+    else if(type === 2) msgNode.innerHTML = `<span style='color:yellow'>[주의]${str}</span>`;
+    // 일반 메세지
+    else msgNode.innerHTML = `<span>${str}</span>`;
+
+    // 2초뒤 해당 내용 지워짐
+    setTimeout(()=>{msgNode.innerHTML = "";}, 2000);
+}
+
+/**************************************************************************
+ * AJAX 서비스 영역
  **************************************************************************/
 /** parameter: xhr
  * xhr <= instantof XMLHttpRequest()
@@ -28,20 +45,20 @@ function ajaxPipe(
 }
 
 /**************************************************************************
- * 입력폼 서비스 영역                                                     *
+ * 입력폼 서비스 영역
  **************************************************************************/
 // 입력폼에 적힌 내용을 서버에 보내 저장
 function saveForm(){
     const userInput = form.querySelectorAll("input,textarea");
-    let mesStr = "";
+    let msgStr = "";
     for(let i=0; i<userInput.length; ++i){
-        mesStr += userInput[i].value.replace(/"/g, '\\"') + '"';
+        msgStr += userInput[i].value.replace(/"/g, '\\"') + '"';
     }
 
     ajaxPipe({
         method: 'POST',
         url: '/save',
-        message: mesStr
+        message: msgStr
     },
     (xhr)=>{/** 성공 메세지 띄우기 & 출력한 내용 변경하기 */},
     (xhr)=>{/** 실패 메세지 띄우기 */}
@@ -51,7 +68,7 @@ function saveForm(){
 // 입력폼에 적힌 모든 내용 지우기
 function clearForm(){
     // 비워져 있지 않을 경우 확인한 후 지우기
-    if(!isFormEmpty() && confirm("적혀진 내용이 존재합니다.\n정말로 적혀진 내용을 지웁니까?")){
+    if(!isFormEmpty() && confirm("적혀진 내용이 존재합니다.\n정말로 적혀진 모든 내용을 지웁니까?")){
         const userInput = form.querySelectorAll("input,textarea");
         for(let i=0; i<userInput.length; ++i){
             userInput[i].value = "";
@@ -84,7 +101,7 @@ function isFormEmpty(){
 }
 
 /**************************************************************************
- * 출력폼 서비스 영역                                                     *
+ * 출력폼 서비스 영역
  **************************************************************************/
 // [임시] 읽어온 내용 출력하기
  function read(){
