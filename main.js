@@ -105,13 +105,20 @@ app.post('/save', (req, res)=>{
  * 읽기 내용 보내는 주소
  */
 app.get('/read', (req, res)=>{
-    if(appInfo.sysExist[appInfo.sysSign('save')] === 1){
+    if(appInfo.sysExist[appInfo.sysSign('save')] !== 0){
+        // 모든 내용 보내기
         fs.readFile(appInfo.sysPath('save'), (err, data)=>{
             if(err){
                 res.status(404).send();
                 throw err;
             }
+            
+            // 전송 전 전처리
+            // 맨 처음이나 끝에 아이템 구분자가 있을 경우 이를 삭제
+            body = body.replace(/^`/g, '').replace(/`$/g, '');
+
             res.send(data);
+            console.log("Send All Item");
         });
     }
     // 파일에 내용이 없을 경우

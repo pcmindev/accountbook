@@ -53,3 +53,7 @@ textarea{
 *::-webkit-scrollbar-button:end {display: none;} /* bottom,right 버튼 */
 *::-webkit-scrollbar-corner {background-color: transparent;} /* 우측 하단코너 */
 *::-webkit-resizer {background-color: transparent;} /* 리사이저 */
+
+/* 셀내부 대각선 ::= (slash:'/', backslash:'\') */
+.cell-slash.gray {background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="100%" x2="100%" y2="0" stroke="gray"/></svg>');}
+.cell-backslash.gray {background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="0" x2="100%" y2="100%" stroke="gray"/></svg>');}
