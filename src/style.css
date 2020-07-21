@@ -54,6 +54,19 @@ textarea{
 *::-webkit-scrollbar-corner {background-color: transparent;} /* 우측 하단코너 */
 *::-webkit-resizer {background-color: transparent;} /* 리사이저 */
 
-/* 셀내부 대각선 ::= (slash:'/', backslash:'\') */
-.cell-slash.gray {background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="100%" x2="100%" y2="0" stroke="gray"/></svg>');}
-.cell-backslash.gray {background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><line x1="0" y1="0" x2="100%" y2="100%" stroke="gray"/></svg>');}
+/* 테이블 표시 영역 */
+table.mt{
+    width: 100%;
+    /* border: 2px solid gray; */
+    border-collapse: collapse;
+}
+table.mt tr:first-child th{
+    border-bottom: 4px double gray;
+}
+
+table.mt td{
+    border-bottom: 1px solid gray;
+}
+table.mt tr:nth-child(2n){
+    background-color: hsl(0, 0%, 25%);
+}

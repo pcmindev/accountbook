@@ -12,7 +12,7 @@ const appInfo = {
     port : 5000,
     // 시스템 디렉토리/파일/환경변수
     sysDirPath : './data/',
-    sysFileName : ['item.json'],
+    sysFileName : ['item'],
     sysExist : [0],
     // 의사기능semantic feature sign 변환convert to 해당파일주소related file path
     sysPath : function(sign){
@@ -71,10 +71,7 @@ fs.stat(appInfo.sysDirPath, (err)=>{
  * 
  * 메인 홈페이지 : index.html
  */
-app.get('/', (req, res)=>{
-    const homeTemplate = fs.readFileSync('./index.html', 'utf-8');
-    res.send(homeTemplate);
-});
+app.get('/', (req, res)=>{res.send(fs.readFileSync('./index.html', 'utf-8'));});
 
 /**
  * host/save/
